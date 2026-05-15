@@ -41,7 +41,7 @@ export const Contact = () => {
             <div className="space-y-3 text-sm text-gray-600">
               <p><strong>电话咨询：</strong> 13323667247</p>
               <p><strong>邮箱：</strong> jaimeluvavocados@hotmail.com</p>
-              <p><strong>地址：</strong> 河南省三门峡市九孔桥夜市二楼</p>
+              <p><strong>地址：</strong> 河南省三门峡市商会大厦B座20层2009</p>
             </div>
           </div>
         </motion.div>
