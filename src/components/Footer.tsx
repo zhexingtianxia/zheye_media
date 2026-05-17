@@ -44,7 +44,7 @@ export const Footer = () => {
             <ul className="space-y-3 lg:space-y-4 text-gray-400 text-sm sm:text-base">
               <li className="flex items-start gap-3">
                 <MapPin className="shrink-0 text-[#2D63EA] mt-0.5" size={18} />
-                <span>河南省三门峡市九孔桥夜市二楼</span>
+                <span>河南省三门峡市商会大厦B座20层2009</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="shrink-0 text-[#2D63EA]" size={18} />
