@@ -44,7 +44,7 @@ export const Footer = () => {
             <ul className="space-y-3 lg:space-y-4 text-stone-600 text-sm sm:text-base">
               <li className="flex items-start gap-3">
                 <MapPin className="shrink-0 text-[#c82e29] mt-0.5" size={18} />
-                <span>河南省三门峡市九孔桥夜市二楼</span>
+                <span>河南省三门峡市商会大厦B座20层</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="shrink-0 text-[#c82e29]" size={18} />
@@ -69,7 +69,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-stone-300 pt-6 lg:pt-8 flex flex-col md:flex-row justify-between items-center text-stone-500 text-xs sm:text-sm gap-4 text-center md:text-left">
-          <p>&copy; 2024 河南三门峡喆也传媒有限公司. All rights reserved.</p>
+          <p>&copy; 2024 河南喆也文化传媒有限公司. All rights reserved.</p>
           <div className="flex gap-4 sm:gap-6">
             <a href="#" className="hover:text-[#c82e29] transition-colors">隐私政策</a>
             <a href="#" className="hover:text-[#c82e29] transition-colors">服务条款</a>
