@@ -29,7 +29,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
-            <img src="/logo-horizontal.png" alt="Pilotage Media" className="h-10 md:h-12 w-auto object-contain" />
+            <Logo />
           </Link>
 
           {/* Desktop Menu */}
@@ -38,12 +38,12 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-[#2D63EA] font-medium transition-colors text-sm tracking-wide"
+                className="text-gray-700 hover:text-[#c82e29] font-medium transition-colors text-sm tracking-wide"
               >
                 {link.name}
               </a>
             ))}
-            <Link to="/contact" className="bg-[#2D63EA] text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-[#1a4bd6] transition-colors shadow-lg shadow-blue-500/30">
+            <Link to="/contact" className="bg-[#c82e29] text-[#f4f1ea] px-5 py-2 rounded-sm text-sm font-medium hover:bg-[#a02220] transition-colors shadow-lg shadow-red-900/20 font-serif">
               合作咨询
             </Link>
           </div>
@@ -72,13 +72,13 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-base font-medium text-gray-800 hover:text-[#2D63EA] hover:bg-blue-50 rounded-xl transition-colors"
+                  className="block px-4 py-3 text-base font-medium text-gray-800 hover:text-[#c82e29] hover:bg-red-50 rounded-xl transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
               <div className="pt-4 px-2">
-                <Link to="/contact" onClick={() => setIsOpen(false)} className="block text-center w-full bg-[#2D63EA] text-white px-5 py-3.5 rounded-xl text-base font-bold hover:bg-[#1a4bd6] transition-colors shadow-lg shadow-blue-500/30">
+                <Link to="/contact" onClick={() => setIsOpen(false)} className="block text-center w-full bg-[#c82e29] text-[#f4f1ea] px-5 py-3.5 rounded-sm text-base font-bold hover:bg-[#a02220] transition-colors shadow-lg shadow-red-900/20 font-serif">
                   合作咨询
                 </Link>
               </div>

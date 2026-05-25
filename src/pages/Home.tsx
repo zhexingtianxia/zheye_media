@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 export const Home = () => {
   return (
-    <div className="font-sans antialiased text-gray-900 bg-white selection:bg-[#2D63EA] selection:text-white overflow-x-hidden">
+    <div className="font-sans antialiased text-gray-900 bg-white selection:bg-[#c82e29] selection:text-white overflow-x-hidden">
       <Navbar />
       <Hero />
       <About />

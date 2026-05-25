@@ -13,7 +13,7 @@ const casesData = {
     images: [
       "/case1.jpg", "/case2.jpg", "/case3.jpg", "/case4.jpg", "/case5.jpg", 
       "/case6.jpg", "/case7.jpg", "/case8.jpg", "/case9.jpg", "/case10.jpg", 
-      "/case11.jpg", "/case12.jpg", "/case13.jpg","/case14.jpg","/case15.jpg"
+      "/case11.jpg", "/case12.jpg", "/case13.jpg"
     ] 
   },
   "2": { 
@@ -36,7 +36,7 @@ const casesData = {
     title: "后台经营效果", 
     desc: "成交数据成倍增长", 
     images: [
-      "/houtai1.png", "/houtai2.png", "/houtai3.png", "/houtai4.png", "/houtai5.png", "/houtai6.png"
+      "/houtai1.png", "/houtai2.png", "/houtai3.png", "/houtai4.png", "/houtai5.png"
     ] 
   },
   "6": { 
@@ -63,7 +63,7 @@ export const CaseDetail = () => {
         <Navbar />
         <main className="flex-grow pt-32 pb-20 px-4 text-center">
           <h1 className="text-2xl font-bold mb-4">案例未找到</h1>
-          <Link to="/cases" className="text-[#2D63EA] hover:underline">返回案例列表</Link>
+          <Link to="/cases" className="text-[#c82e29] hover:underline">返回案例列表</Link>
         </main>
         <Footer />
       </div>
@@ -71,12 +71,12 @@ export const CaseDetail = () => {
   }
 
   return (
-    <div className="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex flex-col selection:bg-[#2D63EA] selection:text-white overflow-x-hidden">
+    <div className="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex flex-col selection:bg-[#c82e29] selection:text-white overflow-x-hidden">
       <Navbar />
       
       <main className="flex-grow pt-28 pb-0">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <Link to="/cases" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#2D63EA] transition-colors mb-6 text-sm font-medium">
+          <Link to="/cases" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#c82e29] transition-colors mb-6 text-sm font-medium">
             <ArrowLeft size={16} /> 返回案例列表
           </Link>
           <h1 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">{caseInfo.title}</h1>
