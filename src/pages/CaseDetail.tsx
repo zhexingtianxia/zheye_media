@@ -22,7 +22,8 @@ const casesData = {
     desc: "单场直播GMV突破", 
     images: [
       "/shuju1.jpg", "/shuju2.jpg", "/shuju3.png", "/shuju4.png", "/shuju5.png", 
-      "/shuju6.png", "/shuju7.jpg", "/shuju8.png", "/shuju9.jpg", "/shuju10.png"
+      "/shuju6.png", "/shuju7.jpg", "/shuju8.png", "/shuju9.jpg", "/shuju10.png",
+      "/shuju11.png", "/shuju12.jpg", "/shuju13.png", "/shuju14.jpg"
     ] 
   },
   "3": { 
