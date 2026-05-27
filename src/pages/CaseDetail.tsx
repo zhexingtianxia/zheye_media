@@ -23,7 +23,7 @@ const casesData = {
     images: [
       "/shuju1.jpg", "/shuju2.jpg", "/shuju3.png", "/shuju4.png", "/shuju5.png", 
       "/shuju6.png", "/shuju7.jpg", "/shuju8.png", "/shuju9.jpg", "/shuju10.png",
-      "/shuju11.png", "/shuju12.jpg", "/shuju13.png", "/shuju14.jpg"
+      "/shuju11.jpg", "/shuju12.jpg", "/shuju13.jpg", "/shuju14.jpg"
     ] 
   },
   "3": { 
