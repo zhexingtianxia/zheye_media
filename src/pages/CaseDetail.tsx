@@ -210,9 +210,16 @@ export const CaseDetail = () => {
           <img 
             src={previewImgUrl} 
             alt="Preview" 
-            className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-sm" 
+            style={{
+              maxWidth: '95vw',
+              maxHeight: '95vh',
+              objectFit: 'contain',
+              imageRendering: 'crisp-edges'
+            }}
+            className="w-auto h-auto block drop-shadow-2xl rounded-sm" 
             onClick={(e) => e.stopPropagation()} 
             loading="eager"
+            referrerPolicy="no-referrer"
           />
           <button 
             className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-gray-300 transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2"
