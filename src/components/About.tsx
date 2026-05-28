@@ -34,7 +34,7 @@ export const About = () => {
             <h3 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">豫西地区新媒体行业的<br className="hidden sm:block"/>标杆企业</h3>
             
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
-              河南三门峡喆也传媒有限公司，成立于2019年，是立足三门峡、辐射全国的领先新媒体综合服务机构。
+              河南喆也文化传媒有限公司，成立于2019年，是立足三门峡、辐射全国的领先新媒体综合服务机构。
             </p>
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-8">
               自成立以来，我们深耕数字内容与直播电商领域，是抖音官方认证的MCN机构与直播公会，并获得了Bilibili、微信视频号、快手等多家主流平台的官方机构认证。

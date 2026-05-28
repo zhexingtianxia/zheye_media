@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, X } from 'lucide-react';
 
 // 模拟案例详情数据
 // 后续您可以将 images 数组中的链接替换为您 public 文件夹中的长图，例如 "/case1-detail.jpg"
@@ -13,7 +13,7 @@ const casesData = {
     images: [
       "/case1.jpg", "/case2.jpg", "/case3.jpg", "/case4.jpg", "/case5.jpg", 
       "/case6.jpg", "/case7.jpg", "/case8.jpg", "/case9.jpg", "/case10.jpg", 
-      "/case11.jpg", "/case12.jpg", "/case13.jpg", "/case14.jpg", "/case15.jpg", 
+      "/case11.jpg", "/case12.jpg", "/case13.jpg", "/case14.jpg", "/case15.jpg",
       "/case16.jpg", "/case17.jpg"
     ] 
   },
@@ -53,11 +53,34 @@ const casesData = {
 export const CaseDetail = () => {
   const { id } = useParams();
   const caseInfo = casesData[id as keyof typeof casesData];
+  
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [previewImgUrl, setPreviewImgUrl] = useState("");
+
+  const openPreview = (url: string) => {
+    setPreviewImgUrl(url);
+    setIsPreviewOpen(true);
+  };
+
+  const closePreview = () => {
+    setIsPreviewOpen(false);
+    setPreviewImgUrl("");
+  };
 
   // 每次进入页面时滚动到顶部
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closePreview();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   if (!caseInfo) {
     return (
@@ -72,37 +95,134 @@ export const CaseDetail = () => {
     );
   }
 
+  // 动态生成业务标签
+  const businessTag = caseInfo.title.includes("运营") ? "账号运营" 
+                    : caseInfo.title.includes("直播") ? "直播带货" 
+                    : caseInfo.title.includes("客资") ? "客资转化" 
+                    : "数据增长";
+
   return (
     <div className="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex flex-col selection:bg-[#c82e29] selection:text-white overflow-x-hidden">
       <Navbar />
       
       <main className="flex-grow pt-28 pb-0">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <Link to="/cases" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#c82e29] transition-colors mb-6 text-sm font-medium">
-            <ArrowLeft size={16} /> 返回案例列表
-          </Link>
-          <h1 className="text-3xl sm:text-4xl font-black text-gray-900 mb-3">{caseInfo.title}</h1>
-          <p className="text-lg text-gray-600">{caseInfo.desc}</p>
-        </div>
         
-        {/* 纯图片排布区域 - 双列瀑布流布局 */}
-        <div className="w-full max-w-6xl mx-auto px-2 sm:px-0">
-          <div className="columns-2 gap-3 sm:gap-4 md:gap-6 space-y-3 sm:space-y-4 md:space-y-6">
-            {caseInfo.images.map((img, idx) => (
-              <div key={idx} className="break-inside-avoid rounded-xl md:rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 bg-white border border-gray-100">
-                <img 
-                  src={img} 
-                  alt={`${caseInfo.title} - 详情图 ${idx + 1}`} 
-                  className="w-full h-auto block hover:scale-105 transition-transform duration-700" 
-                  referrerPolicy="no-referrer" 
-                />
-              </div>
-            ))}
+        {/* 模块 1 & 2：导航区和 Hero 区 */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+          {/* 面包屑导航 */}
+          <div className="flex items-center gap-3 mb-6">
+            <Link to="/cases" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-[#c82e29] transition-colors text-sm font-medium">
+              <ArrowLeft size={16} /> 返回
+            </Link>
+            <span className="text-gray-300">|</span>
+            <div className="flex items-center gap-1.5 text-sm text-gray-500">
+              <Link to="/" className="hover:text-[#c82e29] transition-colors">首页</Link>
+              <span>&gt;</span>
+              <Link to="/cases" className="hover:text-[#c82e29] transition-colors">成功案例</Link>
+              <span>&gt;</span>
+              <span className="text-gray-900 font-medium">{caseInfo.title}</span>
+            </div>
+          </div>
+          
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4 tracking-tight">{caseInfo.title}</h1>
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">{caseInfo.desc}</p>
+          
+          <div className="flex flex-wrap gap-2.5">
+            <span className="rounded-full px-4 py-1.5 text-sm border border-gray-200 bg-white text-gray-600 hover:bg-[#c82e29] hover:text-white hover:border-[#c82e29] transition-colors cursor-default shadow-sm hover:shadow-md">
+              {businessTag}
+            </span>
+            <span className="rounded-full px-4 py-1.5 text-sm bg-red-50 text-[#c82e29] border border-red-100 font-medium hidden sm:inline-block">
+              成果展示
+            </span>
+            <span className="rounded-full px-4 py-1.5 text-sm bg-[#c82e29] text-white border border-[#c82e29] font-medium hidden sm:inline-block shadow-sm">
+              成功案例
+            </span>
           </div>
         </div>
+        
+        {/* 模块 3：主视觉封面区 */}
+        {caseInfo.images.length > 0 && (
+          <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mb-10">
+            <div 
+              className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-white border border-gray-100 cursor-pointer group"
+              onClick={() => openPreview(caseInfo.images[0])}
+            >
+              <img 
+                src={caseInfo.images[0]} 
+                alt={`${caseInfo.title} - 封面大图`} 
+                className="w-full h-auto block group-hover:scale-[1.01] transition-transform duration-700" 
+                referrerPolicy="no-referrer" 
+                loading="eager"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* 模块 4：素材图集区 */}
+        {caseInfo.images.length > 1 && (
+          <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+              {caseInfo.images.slice(1).map((img, idx) => (
+                <div 
+                  key={idx} 
+                  className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-white border border-gray-100 cursor-pointer group"
+                  onClick={() => openPreview(img)}
+                >
+                  <img 
+                    src={img} 
+                    alt={`${caseInfo.title} - 详情图 ${idx + 2}`} 
+                    className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-700" 
+                    referrerPolicy="no-referrer" 
+                    loading="eager"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 模块 6：案例小结区 */}
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 text-center">
+            <h3 className="text-xl font-bold text-[#c82e29] mb-4">案例总结</h3>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl mx-auto">
+              通过定制化的策略和专业的内容执行，我们为客户实现了显著的数据提升与商业转化。无论是品牌曝光还是直播带货，喆也传媒始终坚持以结果为导向。
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">专业运营服务</span>
+              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">精准直播策划</span>
+              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">高效流量转化</span>
+              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">优质内容共创</span>
+            </div>
+          </div>
+        </div>
+
       </main>
 
       <Footer />
+
+      {/* 模块 5：图片灯箱预览区 */}
+      {isPreviewOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/90 backdrop-blur-sm"
+          onClick={closePreview}
+        >
+          <img 
+            src={previewImgUrl} 
+            alt="Preview" 
+            className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-sm" 
+            onClick={(e) => e.stopPropagation()} 
+            loading="eager"
+          />
+          <button 
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-gray-300 transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2"
+            onClick={closePreview}
+            aria-label="Close preview"
+          >
+            <X size={24} />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
