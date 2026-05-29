@@ -206,35 +206,38 @@ export const CaseDetail = () => {
 
       {/* 灯箱预览区 */}
       {isPreviewOpen && caseInfo && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/95 backdrop-blur-md"
-          onClick={closePreview}
-        >
+        <div className="fixed inset-0 z-[100]">
+          {/* 背景遮罩 */}
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={closePreview} />
+          
+          {/* 上下滚动区域 */}
+          <div 
+            className="absolute inset-0 overflow-y-auto overflow-x-hidden"
+            onClick={closePreview}
+          >
+            <div className="min-h-full w-full flex items-start justify-center cursor-zoom-out">
+              <img 
+                src={caseInfo.images[previewIndex]} 
+                alt={`Preview ${previewIndex + 1}`} 
+                style={{ imageRendering: 'crisp-edges' }}
+                className="w-full h-auto block drop-shadow-2xl cursor-default" 
+                onClick={(e) => e.stopPropagation()} 
+                loading="eager"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </div>
+
           <button 
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-3 z-10 hidden sm:block"
+            className="fixed left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-3 z-10 hidden sm:block shadow-lg"
             onClick={handlePrev}
             aria-label="Previous image"
           >
             <ChevronLeft size={32} />
           </button>
           
-          <img 
-            src={caseInfo.images[previewIndex]} 
-            alt={`Preview ${previewIndex + 1}`} 
-            style={{
-              maxWidth: '95vw',
-              maxHeight: '95vh',
-              objectFit: 'contain',
-              imageRendering: 'crisp-edges'
-            }}
-            className="w-auto h-auto block drop-shadow-2xl rounded-sm transition-opacity duration-300" 
-            onClick={(e) => e.stopPropagation()} 
-            loading="eager"
-            referrerPolicy="no-referrer"
-          />
-          
           <button 
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-3 z-10 hidden sm:block"
+            className="fixed right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-3 z-10 hidden sm:block shadow-lg"
             onClick={handleNext}
             aria-label="Next image"
           >
@@ -242,14 +245,14 @@ export const CaseDetail = () => {
           </button>
 
           <button 
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2 z-10"
+            className="fixed top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2 z-10 shadow-lg"
             onClick={closePreview}
             aria-label="Close preview"
           >
             <X size={24} />
           </button>
           
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-black/50 px-4 py-1.5 rounded-full font-mono z-10 flex items-center gap-4">
+          <div className="fixed bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-black/50 px-4 py-1.5 rounded-full font-mono z-10 flex items-center gap-4 shadow-lg">
             <button className="sm:hidden p-1" onClick={handlePrev}><ChevronLeft size={20} /></button>
             <span>{previewIndex + 1} / {caseInfo.images.length}</span>
             <button className="sm:hidden p-1" onClick={handleNext}><ChevronRight size={20} /></button>
