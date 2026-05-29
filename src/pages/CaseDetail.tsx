@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
-import { ArrowLeft, X } from 'lucide-react';
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // 模拟案例详情数据
 // 后续您可以将 images 数组中的链接替换为您 public 文件夹中的长图，例如 "/case1-detail.jpg"
@@ -54,17 +54,28 @@ export const CaseDetail = () => {
   const { id } = useParams();
   const caseInfo = casesData[id as keyof typeof casesData];
   
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [previewImgUrl, setPreviewImgUrl] = useState("");
+  const [previewIndex, setPreviewIndex] = useState<number>(-1);
 
-  const openPreview = (url: string) => {
-    setPreviewImgUrl(url);
-    setIsPreviewOpen(true);
+  const openPreview = (index: number) => {
+    setPreviewIndex(index);
   };
 
   const closePreview = () => {
-    setIsPreviewOpen(false);
-    setPreviewImgUrl("");
+    setPreviewIndex(-1);
+  };
+
+  const isPreviewOpen = previewIndex >= 0;
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!caseInfo) return;
+    setPreviewIndex((prev) => (prev > 0 ? prev - 1 : caseInfo.images.length - 1));
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!caseInfo) return;
+    setPreviewIndex((prev) => (prev < caseInfo.images.length - 1 ? prev + 1 : 0));
   };
 
   // 每次进入页面时滚动到顶部
@@ -76,11 +87,21 @@ export const CaseDetail = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closePreview();
+      } else if (e.key === 'ArrowLeft') {
+        setPreviewIndex((prev) => {
+           if (prev < 0 || !caseInfo) return prev;
+           return prev > 0 ? prev - 1 : caseInfo.images.length - 1;
+        });
+      } else if (e.key === 'ArrowRight') {
+        setPreviewIndex((prev) => {
+           if (prev < 0 || !caseInfo) return prev;
+           return prev < caseInfo.images.length - 1 ? prev + 1 : 0;
+        });
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [caseInfo]);
 
   if (!caseInfo) {
     return (
@@ -140,40 +161,22 @@ export const CaseDetail = () => {
           </div>
         </div>
         
-        {/* 模块 3：主视觉封面区 */}
+        {/* 模块 3：图片缩略图全览区 */}
         {caseInfo.images.length > 0 && (
-          <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mb-10">
-            <div 
-              className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-white border border-gray-100 cursor-pointer group"
-              onClick={() => openPreview(caseInfo.images[0])}
-            >
-              <img 
-                src={caseInfo.images[0]} 
-                alt={`${caseInfo.title} - 封面大图`} 
-                className="w-full h-auto block group-hover:scale-[1.01] transition-transform duration-700" 
-                referrerPolicy="no-referrer" 
-                loading="eager"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* 模块 4：素材图集区 */}
-        {caseInfo.images.length > 1 && (
-          <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 mb-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
-              {caseInfo.images.slice(1).map((img, idx) => (
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+              {caseInfo.images.map((img, idx) => (
                 <div 
                   key={idx} 
-                  className="rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-white border border-gray-100 cursor-pointer group"
-                  onClick={() => openPreview(img)}
+                  className="aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-gray-100 border border-gray-200 cursor-pointer group"
+                  onClick={() => openPreview(idx)}
                 >
                   <img 
                     src={img} 
-                    alt={`${caseInfo.title} - 详情图 ${idx + 2}`} 
-                    className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-700" 
+                    alt={`${caseInfo.title} - 图片 ${idx + 1}`} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     referrerPolicy="no-referrer" 
-                    loading="eager"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -201,33 +204,56 @@ export const CaseDetail = () => {
 
       <Footer />
 
-      {/* 模块 5：图片灯箱预览区 */}
-      {isPreviewOpen && (
+      {/* 灯箱预览区 */}
+      {isPreviewOpen && caseInfo && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/90 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/95 backdrop-blur-md"
           onClick={closePreview}
         >
+          <button 
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-3 z-10 hidden sm:block"
+            onClick={handlePrev}
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={32} />
+          </button>
+          
           <img 
-            src={previewImgUrl} 
-            alt="Preview" 
+            src={caseInfo.images[previewIndex]} 
+            alt={`Preview ${previewIndex + 1}`} 
             style={{
               maxWidth: '95vw',
               maxHeight: '95vh',
               objectFit: 'contain',
               imageRendering: 'crisp-edges'
             }}
-            className="w-auto h-auto block drop-shadow-2xl rounded-sm" 
+            className="w-auto h-auto block drop-shadow-2xl rounded-sm transition-opacity duration-300" 
             onClick={(e) => e.stopPropagation()} 
             loading="eager"
             referrerPolicy="no-referrer"
           />
+          
           <button 
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-gray-300 transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-3 z-10 hidden sm:block"
+            onClick={handleNext}
+            aria-label="Next image"
+          >
+            <ChevronRight size={32} />
+          </button>
+
+          <button 
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2 z-10"
             onClick={closePreview}
             aria-label="Close preview"
           >
             <X size={24} />
           </button>
+          
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-black/50 px-4 py-1.5 rounded-full font-mono z-10 flex items-center gap-4">
+            <button className="sm:hidden p-1" onClick={handlePrev}><ChevronLeft size={20} /></button>
+            <span>{previewIndex + 1} / {caseInfo.images.length}</span>
+            <button className="sm:hidden p-1" onClick={handleNext}><ChevronRight size={20} /></button>
+          </div>
         </div>
       )}
     </div>
