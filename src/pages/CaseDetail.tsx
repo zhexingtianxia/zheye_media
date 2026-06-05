@@ -122,6 +122,14 @@ export const CaseDetail = () => {
                     : caseInfo.title.includes("客资") ? "客资转化" 
                     : "数据增长";
 
+  // 动态确定图片预览框的宽高比例
+  const aspectClass = caseInfo.title.includes("直播带货数据") ? "aspect-[16/9]"
+                    : (caseInfo.title.includes("抖音账号运营") || 
+                       caseInfo.title.includes("客资转化案例") || 
+                       caseInfo.title.includes("后台经营效果") || 
+                       caseInfo.title.includes("直播间人气")) ? "aspect-[9/16]"
+                    : "aspect-square";
+
   return (
     <div className="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex flex-col selection:bg-[#c82e29] selection:text-white overflow-x-hidden">
       <Navbar />
@@ -168,7 +176,7 @@ export const CaseDetail = () => {
               {caseInfo.images.map((img, idx) => (
                 <div 
                   key={idx} 
-                  className="aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-gray-100 border border-gray-200 cursor-pointer group"
+                  className={`${aspectClass} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-gray-100 border border-gray-200 cursor-pointer group`}
                   onClick={() => openPreview(idx)}
                 >
                   <img 
