@@ -23,7 +23,7 @@ const casesData = {
     images: [
       "/shuju1.jpg", "/shuju2.jpg", "/shuju3.png", "/shuju4.png", "/shuju5.png", 
       "/shuju6.png", "/shuju7.jpg", "/shuju8.png", "/shuju9.jpg", "/shuju10.png",
-      "/shuju11.jpg", "/shuju12.jpg", "/shuju13.jpg", "/shuju14.jpg", "/shuju15.jpg"
+      "/shuju11.jpg", "/shuju12.jpg", "/shuju13.jpg", "/shuju14.jpg"
     ] 
   },
   "3": { 
@@ -34,18 +34,25 @@ const casesData = {
       "/kezi6.jpg", "/kezi7.png"
     ] 
   },
-  "5": { 
+  "4": { 
     title: "后台经营效果", 
     desc: "成交数据成倍增长", 
     images: [
       "/houtai1.png", "/houtai2.png", "/houtai3.png", "/houtai4.png", "/houtai5.png"
     ] 
   },
-  "6": { 
+  "5": { 
     title: "直播间人气", 
     desc: "人气爆棚，宣传、成交效果显著", 
     images: [
       "/zhibo1.jpg", "/zhibo2.jpg", "/zhibo3.jpg", "/zhibo4.jpg"
+    ] 
+  },
+  "6": { 
+    title: "爆款作品", 
+    desc: "高播放量与强互动性内容创作", 
+    images: [
+      "/baokuan1.jpg", "/baokuan2.jpg", "/baokuan3.jpg", "/baokuan4.jpg", "/baokuan5.jpg"
     ] 
   }
 };
@@ -120,6 +127,7 @@ export const CaseDetail = () => {
   const businessTag = caseInfo.title.includes("运营") ? "账号运营" 
                     : caseInfo.title.includes("直播") ? "直播带货" 
                     : caseInfo.title.includes("客资") ? "客资转化" 
+                    : caseInfo.title.includes("爆款") ? "内容创作"
                     : "数据增长";
 
   // 动态确定图片预览框的宽高比例
@@ -127,7 +135,8 @@ export const CaseDetail = () => {
                     : (caseInfo.title.includes("抖音账号运营") || 
                        caseInfo.title.includes("客资转化案例") || 
                        caseInfo.title.includes("后台经营效果") || 
-                       caseInfo.title.includes("直播间人气")) ? "aspect-[9/16]"
+                       caseInfo.title.includes("直播间人气") ||
+                       caseInfo.title.includes("爆款作品")) ? "aspect-[9/16]"
                     : "aspect-square";
 
   return (

@@ -26,16 +26,22 @@ export const Cases = () => {
       img: "/kezi1.jpg"
     },
     {
-      id: 5,
+      id: 4,
       title: "后台经营效果",
       desc: "成交数据成倍增长",
       img: "/houtai1.png"
     },
     {
-      id: 6,
+      id: 5,
       title: "直播间人气",
       desc: "人气爆棚，宣传、成交效果显著",
       img: "/zhibo1.jpg"
+    },
+    {
+      id: 6,
+      title: "爆款作品",
+      desc: "高播放量与强互动性内容创作",
+      img: "/baokuan1.jpg"
     }
   ];
 
