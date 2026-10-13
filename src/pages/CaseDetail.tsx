@@ -11,7 +11,7 @@ const casesData = {
     title: "抖音账号运营", 
     desc: "粉丝增长与内容策略", 
     images: [
-      "/case1.jpg", "/case2.jpg", "/case3.jpg", "/case4.jpg", "/case5.jpg", 
+      "/case.jpg", "/case0.jpg", "/case1.jpg", "/case2.jpg", "/case3.jpg", "/case4.jpg", "/case5.jpg", 
       "/case6.jpg", "/case7.jpg", "/case8.jpg", "/case9.jpg", "/case10.jpg", 
       "/case11.jpg", "/case12.jpg", "/case13.jpg", "/case14.jpg", "/case15.jpg",
       "/case16.jpg", "/case17.jpg", "/case18.jpg", "/case19.jpg", "/case20.jpg",
