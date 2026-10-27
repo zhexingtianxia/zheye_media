@@ -3,7 +3,7 @@ import { Award, TrendingUp } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-16 lg:py-24 bg-white overflow-hidden">
+    <section id="about" className="py-16 lg:py-24 bg-white dark:bg-zinc-900 overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="relative order-2 lg:order-1 mt-8 lg:mt-0">
@@ -22,41 +22,41 @@ export const About = () => {
               />
             </div>
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-100 max-w-[140px] sm:max-w-xs text-center transform scale-95 sm:scale-110">
+              <div className="bg-white dark:bg-zinc-950 p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 max-w-[140px] sm:max-w-xs text-center transform scale-95 sm:scale-110">
                 <p className="text-3xl sm:text-4xl font-serif font-black text-[#c82e29]">2019</p>
-                <p className="text-gray-500 text-[10px] sm:text-sm uppercase tracking-wider font-bold mt-1">成立于 Founded</p>
+                <p className="text-gray-500 dark:text-zinc-400 text-[10px] sm:text-sm uppercase tracking-wider font-bold mt-1">成立于 Founded</p>
               </div>
             </div>
           </div>
 
           <div className="order-1 lg:order-2">
             <h2 className="text-[#c82e29] font-serif font-bold tracking-wider uppercase text-xs sm:text-sm mb-2">关于我们 About Us</h2>
-            <h3 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">豫西地区新媒体行业的<br className="hidden sm:block"/>标杆企业</h3>
+            <h3 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900 dark:text-zinc-50 mb-5 sm:mb-6 leading-tight">豫西地区新媒体行业的<br className="hidden sm:block"/>标杆企业</h3>
             
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
+            <p className="text-gray-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
               河南喆也文化传媒有限公司，成立于2019年，是立足三门峡、辐射全国的领先新媒体综合服务机构。
             </p>
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-8">
+            <p className="text-gray-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed mb-8">
               自成立以来，我们深耕数字内容与直播电商领域，是抖音官方认证的MCN机构与直播公会，并获得了Bilibili、微信视频号、快手等多家主流平台的官方机构认证。
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div className="flex items-start gap-4 bg-gray-50 sm:bg-transparent p-4 sm:p-0 rounded-xl">
-                <div className="bg-red-50 border border-red-100 p-3 rounded-sm text-[#c82e29] shrink-0">
+              <div className="flex items-start gap-4 bg-gray-50 dark:bg-zinc-950 sm:bg-transparent sm:dark:bg-transparent p-4 sm:p-0 rounded-xl">
+                <div className="bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 p-3 rounded-sm text-[#c82e29] dark:text-red-400 shrink-0">
                   <Award size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-base sm:text-lg">官方认证</h4>
-                  <p className="text-sm text-gray-500 mt-1">抖音 MCN / 直播公会</p>
+                  <h4 className="font-bold text-gray-900 dark:text-zinc-100 text-base sm:text-lg">官方认证</h4>
+                  <p className="text-sm text-gray-500 dark:text-zinc-400 mt-1">抖音 MCN / 直播公会</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4 bg-gray-50 sm:bg-transparent p-4 sm:p-0 rounded-xl">
-                <div className="bg-stone-100 border border-stone-200 p-3 rounded-sm text-[#1a1a1a] shrink-0">
+              <div className="flex items-start gap-4 bg-gray-50 dark:bg-zinc-950 sm:bg-transparent sm:dark:bg-transparent p-4 sm:p-0 rounded-xl">
+                <div className="bg-stone-100 dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 p-3 rounded-sm text-[#1a1a1a] dark:text-zinc-100 shrink-0">
                   <TrendingUp size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-base sm:text-lg">行业标杆</h4>
-                  <p className="text-sm text-gray-500 mt-1">三门峡优秀传媒企业</p>
+                  <h4 className="font-bold text-gray-900 dark:text-zinc-100 text-base sm:text-lg">行业标杆</h4>
+                  <p className="text-sm text-gray-500 dark:text-zinc-400 mt-1">三门峡优秀传媒企业</p>
                 </div>
               </div>
             </div>

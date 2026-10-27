@@ -8,16 +8,16 @@ import { Link } from 'react-router-dom';
 
 export const Home = () => {
   return (
-    <div className="font-sans antialiased text-gray-900 bg-white selection:bg-[#c82e29] selection:text-white overflow-x-hidden">
+    <div className="font-sans antialiased text-gray-900 dark:text-zinc-100 bg-white dark:bg-zinc-900 selection:bg-[#c82e29] selection:text-white overflow-x-hidden transition-colors duration-300">
       <Navbar />
       <Hero />
       <About />
       <Services />
       
       {/* Partners Section */}
-      <section id="partners" className="py-12 lg:py-16 bg-white border-t border-gray-100">
+      <section id="partners" className="py-12 lg:py-16 bg-white dark:bg-zinc-900 border-t border-gray-100 dark:border-white/10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-400 font-bold uppercase tracking-widest mb-6 sm:mb-8 text-xs sm:text-sm">Trusted Partners & Platforms</p>
+          <p className="text-gray-400 dark:text-zinc-500 font-bold uppercase tracking-widest mb-6 sm:mb-8 text-xs sm:text-sm">Trusted Partners & Platforms</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-10">
             {[
@@ -28,7 +28,7 @@ export const Home = () => {
             ].map((partner) => (
               <div 
                 key={partner.id} 
-                className="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 bg-gray-100 aspect-[1280/497]"
+                className="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-xl dark:shadow-black/30 transition-all duration-300 bg-gray-100 dark:bg-zinc-800 aspect-[1280/497]"
               >
                 <img 
                   src={partner.img} 
@@ -45,7 +45,7 @@ export const Home = () => {
             ))}
           </div>
 
-          <Link to="/cases" className="inline-flex items-center justify-center bg-white text-gray-800 px-8 py-3 rounded-xl font-bold text-sm hover:bg-gray-50 transition-all shadow-sm border border-gray-200">
+          <Link to="/cases" className="inline-flex items-center justify-center bg-white dark:bg-zinc-950 text-gray-800 dark:text-zinc-100 px-8 py-3 rounded-xl font-bold text-sm hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all shadow-sm border border-gray-200 dark:border-white/10">
             查看更多成功案例
           </Link>
         </div>

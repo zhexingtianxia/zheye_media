@@ -145,7 +145,7 @@ export const CaseDetail = () => {
 
   if (!caseInfo) {
     return (
-      <div className="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex flex-col">
+      <div className="font-sans antialiased text-gray-900 dark:text-zinc-100 bg-slate-50 dark:bg-zinc-950 min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow pt-32 pb-20 px-4 text-center">
           <h1 className="text-2xl font-bold mb-4">案例未找到</h1>
@@ -173,7 +173,7 @@ export const CaseDetail = () => {
                     : "aspect-square";
 
   return (
-    <div className="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex flex-col selection:bg-[#c82e29] selection:text-white overflow-x-hidden">
+    <div className="font-sans antialiased text-gray-900 dark:text-zinc-100 bg-slate-50 dark:bg-zinc-950 min-h-screen flex flex-col selection:bg-[#c82e29] selection:text-white overflow-x-hidden transition-colors duration-300">
       <Navbar />
       
       <main className="flex-grow pt-28 pb-0">
@@ -182,27 +182,27 @@ export const CaseDetail = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           {/* 面包屑导航 */}
           <div className="flex items-center gap-3 mb-6">
-            <Link to="/cases" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-[#c82e29] transition-colors text-sm font-medium">
+            <Link to="/cases" className="inline-flex items-center gap-1.5 text-gray-500 dark:text-zinc-400 hover:text-[#c82e29] transition-colors text-sm font-medium">
               <ArrowLeft size={16} /> 返回
             </Link>
-            <span className="text-gray-300">|</span>
-            <div className="flex items-center gap-1.5 text-sm text-gray-500">
+            <span className="text-gray-300 dark:text-zinc-700">|</span>
+            <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-zinc-400">
               <Link to="/" className="hover:text-[#c82e29] transition-colors">首页</Link>
               <span>&gt;</span>
               <Link to="/cases" className="hover:text-[#c82e29] transition-colors">成功案例</Link>
               <span>&gt;</span>
-              <span className="text-gray-900 font-medium">{caseInfo.title}</span>
+              <span className="text-gray-900 dark:text-zinc-100 font-medium">{caseInfo.title}</span>
             </div>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4 tracking-tight">{caseInfo.title}</h1>
-          <p className="text-lg sm:text-xl text-gray-600 mb-6 leading-relaxed">{caseInfo.desc}</p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-zinc-50 mb-4 tracking-tight">{caseInfo.title}</h1>
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-zinc-400 mb-6 leading-relaxed">{caseInfo.desc}</p>
           
           <div className="flex flex-wrap gap-2.5">
-            <span className="rounded-full px-4 py-1.5 text-sm border border-gray-200 bg-white text-gray-600 hover:bg-[#c82e29] hover:text-white hover:border-[#c82e29] transition-colors cursor-default shadow-sm hover:shadow-md">
+            <span className="rounded-full px-4 py-1.5 text-sm border border-gray-200 dark:border-white/10 bg-white dark:bg-zinc-900 text-gray-600 dark:text-zinc-300 hover:bg-[#c82e29] hover:text-white hover:border-[#c82e29] transition-colors cursor-default shadow-sm hover:shadow-md">
               {businessTag}
             </span>
-            <span className="rounded-full px-4 py-1.5 text-sm bg-red-50 text-[#c82e29] border border-red-100 font-medium hidden sm:inline-block">
+            <span className="rounded-full px-4 py-1.5 text-sm bg-red-50 dark:bg-red-950/30 text-[#c82e29] dark:text-red-400 border border-red-100 dark:border-red-900/50 font-medium hidden sm:inline-block">
               成果展示
             </span>
             <span className="rounded-full px-4 py-1.5 text-sm bg-[#c82e29] text-white border border-[#c82e29] font-medium hidden sm:inline-block shadow-sm">
@@ -218,7 +218,7 @@ export const CaseDetail = () => {
               {caseInfo.images.map((img, idx) => (
                 <div 
                   key={idx} 
-                  className={`${aspectClass} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-gray-100 border border-gray-200 cursor-pointer group`}
+                  className={`${aspectClass} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-white/10 cursor-pointer group`}
                   onClick={() => openPreview(idx)}
                 >
                   <img 
@@ -236,16 +236,16 @@ export const CaseDetail = () => {
 
         {/* 模块 6：案例小结区 */}
         <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 text-center">
+          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 dark:border-white/10 text-center">
             <h3 className="text-xl font-bold text-[#c82e29] mb-4">案例总结</h3>
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl mx-auto">
               通过定制化的策略和专业的内容执行，我们为客户实现了显著的数据提升与商业转化。无论是品牌曝光还是直播带货，喆也传媒始终坚持以结果为导向。
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">专业运营服务</span>
-              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">精准直播策划</span>
-              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">高效流量转化</span>
-              <span className="text-xs text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100">优质内容共创</span>
+              <span className="text-xs text-gray-500 dark:text-zinc-400 bg-gray-50 dark:bg-zinc-950 px-3 py-1.5 rounded-full border border-gray-100 dark:border-white/10">专业运营服务</span>
+              <span className="text-xs text-gray-500 dark:text-zinc-400 bg-gray-50 dark:bg-zinc-950 px-3 py-1.5 rounded-full border border-gray-100 dark:border-white/10">精准直播策划</span>
+              <span className="text-xs text-gray-500 dark:text-zinc-400 bg-gray-50 dark:bg-zinc-950 px-3 py-1.5 rounded-full border border-gray-100 dark:border-white/10">高效流量转化</span>
+              <span className="text-xs text-gray-500 dark:text-zinc-400 bg-gray-50 dark:bg-zinc-950 px-3 py-1.5 rounded-full border border-gray-100 dark:border-white/10">优质内容共创</span>
             </div>
           </div>
         </div>

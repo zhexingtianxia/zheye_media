@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   return (
-    <section id="home" className="relative min-h-[100svh] flex items-center pt-24 pb-12 overflow-hidden bg-slate-50">
+    <section id="home" className="relative min-h-[100svh] flex items-center pt-24 pb-12 overflow-hidden bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-[#f0f9ff] skew-x-0 md:skew-x-[-10deg] md:translate-x-20 z-0 opacity-50 md:opacity-100" />
+      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-[#f0f9ff] dark:bg-zinc-900 skew-x-0 md:skew-x-[-10deg] md:translate-x-20 z-0 opacity-50 md:opacity-100" />
       <div className="absolute top-20 right-10 md:right-20 w-64 md:w-96 h-64 md:h-96 bg-[#1a1a1a]/10 rounded-full blur-3xl z-0" />
       <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 w-48 md:w-72 h-48 md:h-72 bg-[#c82e29]/10 rounded-full blur-3xl z-0" />
 
@@ -19,17 +19,17 @@ export const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left pt-10 lg:pt-0"
           >
-            <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 mb-6 md:mb-8">
+            <div className="inline-flex items-center gap-2 bg-white dark:bg-zinc-900 px-4 py-2 rounded-full shadow-sm border border-gray-100 dark:border-white/10 mb-6 md:mb-8">
               <span className="w-2 h-2 rounded-sm bg-[#c82e29]"></span>
-              <span className="text-xs sm:text-sm font-medium text-gray-600 tracking-wide">官方认证 MCN 机构</span>
+              <span className="text-xs sm:text-sm font-medium text-gray-600 dark:text-zinc-300 tracking-wide">官方认证 MCN 机构</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-gray-900 leading-[1.2] md:leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-gray-900 dark:text-zinc-50 leading-[1.2] md:leading-[1.1] mb-6">
               喆也<span className="text-[#c82e29]">新媒体</span><br />
-              创造<span className="text-gray-800">无限可能</span>
+              创造<span className="text-gray-800 dark:text-zinc-200">无限可能</span>
             </h1>
             
-            <p className="text-base sm:text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-zinc-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               立足三门峡，辐射全国。我们深耕数字内容与直播电商领域，为您提供专业的一站式新媒体解决方案。
             </p>
             
@@ -38,7 +38,7 @@ export const Hero = () => {
                 立即咨询
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/cases" className="w-full sm:w-auto justify-center bg-white text-[#1a1a1a] px-8 py-4 rounded-sm font-serif font-bold text-lg hover:bg-gray-50 transition-all shadow-md border border-gray-200 flex items-center gap-2">
+              <Link to="/cases" className="w-full sm:w-auto justify-center bg-white dark:bg-zinc-900 text-[#1a1a1a] dark:text-zinc-100 px-8 py-4 rounded-sm font-serif font-bold text-lg hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all shadow-md border border-gray-200 dark:border-white/10 flex items-center gap-2">
                 <Play size={20} className="fill-gray-800" />
                 了解更多
               </Link>
@@ -51,7 +51,7 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative hidden md:block mt-10 lg:mt-0"
           >
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20 border-4 border-white transform lg:rotate-[-2deg] hover:rotate-0 transition-all duration-500">
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20 dark:shadow-black/50 border-4 border-white dark:border-zinc-800 transform lg:rotate-[-2deg] hover:rotate-0 transition-all duration-500">
               <img 
                 src="https://picsum.photos/seed/media/800/600" 
                 alt="Live Streaming Studio" 

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const Contact = () => {
   return (
-    <div className="font-sans antialiased text-gray-900 bg-slate-50 min-h-screen flex flex-col selection:bg-[#c82e29] selection:text-white overflow-x-hidden">
+    <div className="font-sans antialiased text-gray-900 dark:text-zinc-100 bg-slate-50 dark:bg-zinc-950 min-h-screen flex flex-col selection:bg-[#c82e29] selection:text-white overflow-x-hidden transition-colors duration-300">
       <Navbar />
       
       <main className="flex-grow flex items-center justify-center pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative">
@@ -19,17 +19,17 @@ export const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative z-10 bg-white p-8 md:p-12 rounded-3xl shadow-2xl shadow-red-900/10 max-w-md w-full text-center border border-gray-100"
+          className="relative z-10 bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-3xl shadow-2xl shadow-red-900/10 dark:shadow-black/40 max-w-md w-full text-center border border-gray-100 dark:border-white/10"
         >
-          <Link to="/" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#c82e29] transition-colors mb-8 text-sm font-medium self-start absolute top-8 left-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-zinc-400 hover:text-[#c82e29] transition-colors mb-8 text-sm font-medium self-start absolute top-8 left-8">
             <ArrowLeft size={16} /> 返回首页
           </Link>
           
           <div className="mt-8">
-            <h1 className="text-3xl font-serif font-black text-gray-900 mb-2">联系我们</h1>
-            <p className="text-gray-500 mb-8">扫描下方二维码，添加微信客服</p>
+            <h1 className="text-3xl font-serif font-black text-gray-900 dark:text-zinc-50 mb-2">联系我们</h1>
+            <p className="text-gray-500 dark:text-zinc-400 mb-8">扫描下方二维码，添加微信客服</p>
             
-            <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 mb-8 inline-block">
+            <div className="bg-gray-50 dark:bg-white p-4 rounded-2xl border border-gray-100 dark:border-zinc-700 mb-8 inline-block">
               <img 
                 src="/wechat-qr.jpg" 
                 alt="WeChat QR Code" 
@@ -38,7 +38,7 @@ export const Contact = () => {
               />
             </div>
             
-            <div className="space-y-3 text-sm text-gray-600">
+            <div className="space-y-3 text-sm text-gray-600 dark:text-zinc-300">
               <p><strong>电话咨询：</strong> 13323667247</p>
               <p><strong>邮箱：</strong> jaimeluvavocados@hotmail.com</p>
               <p><strong>地址：</strong> 河南省三门峡市商会大厦B座20层</p>

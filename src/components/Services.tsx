@@ -42,23 +42,23 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-16 lg:py-24 bg-gray-50">
+    <section id="services" className="py-16 lg:py-24 bg-gray-50 dark:bg-zinc-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
           <h2 className="text-[#c82e29] font-serif font-bold tracking-wider uppercase text-xs sm:text-sm mb-2">业务领域 Services</h2>
-          <h3 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-4">全方位新媒体解决方案</h3>
-          <p className="text-gray-600 text-sm sm:text-base px-4 sm:px-0">我们提供从账号孵化到商业变现的全链路服务，助力企业和个人在新媒体时代乘风破浪。</p>
+          <h3 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900 dark:text-zinc-50 mb-4">全方位新媒体解决方案</h3>
+          <p className="text-gray-600 dark:text-zinc-400 text-sm sm:text-base px-4 sm:px-0">我们提供从账号孵化到商业变现的全链路服务，助力企业和个人在新媒体时代乘风破浪。</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((item, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col items-start sm:block">
+            <div key={index} className="bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-xl dark:hover:shadow-black/40 transition-all duration-300 border border-gray-100 dark:border-white/10 group flex flex-col items-start sm:block">
               <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-sm ${item.color} text-[#f4f1ea] flex items-center justify-center mb-5 sm:mb-6 group-hover:scale-110 transition-transform shrink-0`}>
                 {item.icon}
               </div>
               <div>
-                <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h4>
-                <p className="text-gray-500 text-sm sm:text-base leading-relaxed">{item.desc}</p>
+                <h4 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-zinc-100 mb-2 sm:mb-3">{item.title}</h4>
+                <p className="text-gray-500 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}

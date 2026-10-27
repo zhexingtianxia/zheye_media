@@ -3,6 +3,7 @@ import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-4 md:py-5'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm dark:shadow-black/30 py-3' : 'bg-transparent py-4 md:py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
@@ -38,19 +39,21 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-[#c82e29] font-medium transition-colors text-sm tracking-wide"
+                className="text-gray-700 dark:text-zinc-300 hover:text-[#c82e29] dark:hover:text-red-400 font-medium transition-colors text-sm tracking-wide"
               >
                 {link.name}
               </a>
             ))}
+            <ThemeToggle />
             <Link to="/contact" className="bg-[#c82e29] text-[#f4f1ea] px-5 py-2 rounded-sm text-sm font-medium hover:bg-[#a02220] transition-colors shadow-lg shadow-red-900/20 font-serif">
               合作咨询
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-900 p-2 focus:outline-none">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-900 dark:text-zinc-100 p-2 focus:outline-none" aria-label={isOpen ? '关闭导航菜单' : '打开导航菜单'}>
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -64,7 +67,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-2xl absolute w-full"
+            className="md:hidden bg-white dark:bg-zinc-950 border-t border-gray-100 dark:border-white/10 overflow-hidden shadow-2xl absolute w-full"
           >
             <div className="px-4 pt-4 pb-8 space-y-2">
               {navLinks.map((link) => (
@@ -72,7 +75,7 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-base font-medium text-gray-800 hover:text-[#c82e29] hover:bg-red-50 rounded-xl transition-colors"
+                  className="block px-4 py-3 text-base font-medium text-gray-800 dark:text-zinc-200 hover:text-[#c82e29] hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-colors"
                 >
                   {link.name}
                 </a>
