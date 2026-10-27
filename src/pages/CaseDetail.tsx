@@ -4,6 +4,31 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
+// 抖音账号运营案例的主页链接，以案例图片序号（从 1 开始）对应。
+// 未配置链接的图片只提供全屏预览，不执行跳转。
+const douyinProfileLinks: Record<number, string> = {
+  1: "https://www.douyin.com/user/MS4wLjABAAAA7uLwTFczeEYyh8MABTvUHsLwMXC7zv1WEJyFQCIGXLk?from_tab_name=main",
+  2: "https://www.douyin.com/user/MS4wLjABAAAA-oCpnuNdFVd_hU0MoHDnjMK9Jb7XvB5lB_YkgCVcnNvJQUe9FGZTVHa9JWVIWvLt?from_tab_name=main",
+  3: "https://www.douyin.com/user/MS4wLjABAAAAiUO3qGlKpTWughYOXMQrNC9ewQN9eujJevhxXENWJ_SSYVYgiEZ1TNCXjnv2fERL?from_tab_name=main",
+  5: "https://www.douyin.com/user/MS4wLjABAAAAFFPegjU0f7TdaDaempSvTjjlkph-qDfJKrU9FFqMYvz-2CJvx5jqlTf7dJ2aYamB?from_tab_name=main",
+  7: "https://www.douyin.com/user/MS4wLjABAAAA_NcwZtLBZAFUY8u0fIxcc5-Xc1eOkQFHXg4sigZqAMfCg8aWAIBlxFA3CWYkFxrO?from_tab_name=main",
+  8: "https://www.douyin.com/user/MS4wLjABAAAA-B57de3wgvzPL4KK5J3gcxkDp9GUhtpFOwHg7SmlsTY?from_tab_name=main",
+  9: "https://www.douyin.com/user/MS4wLjABAAAA8tPS75jouocRzeSLatW28kCq4LactQQEkgArzJ6eCoan8pUnuUGh3U-IJ7zcHuOk?from_tab_name=main",
+  11: "https://www.douyin.com/user/MS4wLjABAAAAUjnVcIkVKAGfPTTwBQ-chHLdrXEuK4WShoQi4sRkNMo?from_tab_name=main",
+  13: "https://www.douyin.com/user/MS4wLjABAAAAcLi0o0GKTZUJi84q1qHPXheUXeQS60lrnAjd4bcJIx9Cn3yqxO07hh-dtogeriPz?from_tab_name=main",
+  14: "https://www.douyin.com/user/MS4wLjABAAAAlvMWEDHGnUQ6NkXCNs2OimaEnN0QnwJXUXlVdclgdl4?from_tab_name=main",
+  15: "https://www.douyin.com/user/MS4wLjABAAAAoy5p7Y0FfQAC9r3mCoY6t78I6tRLj4SL2syXoJbuYl0GhAkEsJuBWR5mCLlI7O9o?from_tab_name=main",
+  16: "https://www.douyin.com/user/MS4wLjABAAAAA4oQkWAwSDD5GRVwZcTTdBOG4l_34Zk81-ENRqsUXo87bBzA4optV0AWN7UMQ_JS?from_tab_name=main",
+  17: "https://www.douyin.com/user/MS4wLjABAAAAL2AM7yR5mrdSOfZBzf1XVMUPY5U76IfgYXGYu-97Ok9hFtn0XSzalxGI31l0qIbd?from_tab_name=main",
+  18: "https://www.douyin.com/user/MS4wLjABAAAAqE1lsZWrO9v_7HSuRg7k9Xv0OuetRwIrzVLobgRGMxgSv0UXij52DdNLb4ou-9fB?from_tab_name=main",
+  19: "https://www.douyin.com/user/MS4wLjABAAAAv7qIdppLUxnIgbq3apS_KBQTU2xwUUoq2Xqccijcz7ujlyae9clXEEjoWxHGSfkm?from_tab_name=main",
+  20: "https://www.douyin.com/user/MS4wLjABAAAAHyf0rxEqGifQm7techMvTQiOuaaWO2Qimb_47xQH6CvNunxMJu_6VlshNVW6Mz_H?from_tab_name=main",
+  22: "https://www.douyin.com/user/MS4wLjABAAAA__gEg5aIjSMMQT8QVxdb621SzJR2wSUFarL7dTKwuao?from_tab_name=main",
+  23: "https://www.douyin.com/user/MS4wLjABAAAA60XP8pS8PrVgO-0oSWkSvPQdLsGHLThCzXhFVEuugDA?from_tab_name=main",
+  24: "https://www.douyin.com/user/MS4wLjABAAAAySNm1Wwv2CUFguYKnK9agu0Ex_vOrGiXxxoev_WJ6Ao?from_tab_name=main",
+  25: "https://www.douyin.com/user/MS4wLjABAAAAseeRrGPI9x-DMZPHwY7slKT2fy_zZDYJtTulqkCDcVRoU32iGWhjXQ8KelRuLOEq?from_tab_name=main",
+};
+
 // 模拟案例详情数据
 // 后续您可以将 images 数组中的链接替换为您 public 文件夹中的长图，例如 "/case1-detail.jpg"
 const casesData = {
@@ -79,6 +104,7 @@ export const CaseDetail = () => {
   };
 
   const isPreviewOpen = previewIndex >= 0;
+  const previewDouyinLink = id === "1" ? douyinProfileLinks[previewIndex + 1] : undefined;
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -240,15 +266,36 @@ export const CaseDetail = () => {
             onClick={closePreview}
           >
             <div className="min-h-full w-full flex items-start justify-center cursor-zoom-out">
-              <img 
-                src={caseInfo.images[previewIndex]} 
-                alt={`Preview ${previewIndex + 1}`} 
-                style={{ imageRendering: 'crisp-edges' }}
-                className="w-full h-auto block drop-shadow-2xl cursor-default" 
-                onClick={(e) => e.stopPropagation()} 
-                loading="eager"
-                referrerPolicy="no-referrer"
-              />
+              {previewDouyinLink ? (
+                <a
+                  href={previewDouyinLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full cursor-pointer"
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label={`打开图片 ${previewIndex + 1} 对应的抖音主页`}
+                  title="点击进入该账号的抖音主页"
+                >
+                  <img
+                    src={caseInfo.images[previewIndex]}
+                    alt={`Preview ${previewIndex + 1}`}
+                    style={{ imageRendering: 'crisp-edges' }}
+                    className="w-full h-auto block drop-shadow-2xl cursor-pointer"
+                    loading="eager"
+                    referrerPolicy="no-referrer"
+                  />
+                </a>
+              ) : (
+                <img
+                  src={caseInfo.images[previewIndex]}
+                  alt={`Preview ${previewIndex + 1}`}
+                  style={{ imageRendering: 'crisp-edges' }}
+                  className="w-full h-auto block drop-shadow-2xl cursor-default"
+                  onClick={(e) => e.stopPropagation()}
+                  loading="eager"
+                  referrerPolicy="no-referrer"
+                />
+              )}
             </div>
           </div>
 
