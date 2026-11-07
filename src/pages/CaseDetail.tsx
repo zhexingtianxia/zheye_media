@@ -27,6 +27,9 @@ const douyinProfileLinks: Record<number, string> = {
   23: "https://www.douyin.com/user/MS4wLjABAAAA60XP8pS8PrVgO-0oSWkSvPQdLsGHLThCzXhFVEuugDA?from_tab_name=main",
   24: "https://www.douyin.com/user/MS4wLjABAAAAySNm1Wwv2CUFguYKnK9agu0Ex_vOrGiXxxoev_WJ6Ao?from_tab_name=main",
   25: "https://www.douyin.com/user/MS4wLjABAAAAseeRrGPI9x-DMZPHwY7slKT2fy_zZDYJtTulqkCDcVRoU32iGWhjXQ8KelRuLOEq?from_tab_name=main",
+  26: "https://www.douyin.com/user/MS4wLjABAAAAyMiIWaDCY9mNQKSZ_GMB6tA3Btqw0wGjaP2KBaHw9UFvIt5xxTxflNAWgyraLRQr?from_tab_name=main",
+  27: "https://www.douyin.com/user/MS4wLjABAAAALl26kCVGKWdXS0eMbS7FPdcKRn3PocfodHxk3G7ilc0cict1-_eaxNKXoAIwEA46?from_tab_name=main",
+  28: "https://www.douyin.com/user/MS4wLjABAAAAc5AQsuZnn7Ei2rO7vtwJaA5eur8EFf2XNtZAn41r_hUV35DD_iRKeTlzPMfySaSj?from_tab_name=main",
 };
 
 // 模拟案例详情数据
@@ -40,7 +43,8 @@ const casesData = {
       "/case6.jpg", "/case7.jpg", "/case8.jpg", "/case9.jpg", "/case10.jpg", 
       "/case11.jpg", "/case12.jpg", "/case13.jpg", "/case14.jpg", "/case15.jpg",
       "/case16.jpg", "/case17.jpg", "/case18.jpg", "/case19.jpg", "/case20.jpg",
-      "/case21.jpg","/case22.jpg","/case23.jpg"
+      "/case21.jpg", "/case22.jpg", "/case23.jpg", "/case24.jpg", "/case25.jpg",
+      "/case26.jpg"
     ] 
   },
   "2": { 
