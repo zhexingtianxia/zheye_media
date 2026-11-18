@@ -32,6 +32,11 @@ const douyinProfileLinks: Record<number, string> = {
   28: "https://www.douyin.com/user/MS4wLjABAAAAc5AQsuZnn7Ei2rO7vtwJaA5eur8EFf2XNtZAn41r_hUV35DD_iRKeTlzPMfySaSj?from_tab_name=main",
 };
 
+const getCaseThumbnailPath = (imagePath: string) => {
+  const fileName = imagePath.split('/').pop();
+  return fileName ? `/case-thumbnails/${fileName}` : imagePath;
+};
+
 // 模拟案例详情数据
 // 后续您可以将 images 数组中的链接替换为您 public 文件夹中的长图，例如 "/case1-detail.jpg"
 const casesData = {
@@ -219,21 +224,29 @@ export const CaseDetail = () => {
         {caseInfo.images.length > 0 && (
           <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
-              {caseInfo.images.map((img, idx) => (
-                <div 
-                  key={idx} 
-                  className={`${aspectClass} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-white/10 cursor-pointer group`}
-                  onClick={() => openPreview(idx)}
-                >
-                  <img 
-                    src={img} 
-                    alt={`${caseInfo.title} - 图片 ${idx + 1}`} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                    referrerPolicy="no-referrer" 
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+              {caseInfo.images.map((img, idx) => {
+                const isDouyinAccountCase = id === "1";
+                const previewSrc = isDouyinAccountCase ? getCaseThumbnailPath(img) : img;
+
+                return (
+                  <div
+                    key={img}
+                    className={`${aspectClass} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-white/10 cursor-pointer group`}
+                    onClick={() => openPreview(idx)}
+                  >
+                    <img
+                      src={previewSrc}
+                      alt={`${caseInfo.title} - 图片 ${idx + 1}`}
+                      className={`w-full h-full object-cover ${isDouyinAccountCase ? 'object-top' : 'object-center'} group-hover:scale-105 transition-transform duration-500`}
+                      width={isDouyinAccountCase ? 480 : undefined}
+                      height={isDouyinAccountCase ? 853 : undefined}
+                      referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
